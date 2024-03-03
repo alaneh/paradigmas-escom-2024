@@ -29,7 +29,6 @@ void shuffle(int array[], int n);
 void escribir(int numeros[], const char* filename);
 int busqueda_secuencial(int *numeros, int tamanio, int dato, int *posicion);
 void ordenar_numeros(int *numeros, int tamanio);
-void escribir_numeros_ordenados(const char *nombre_archivo, int *numeros, int tamanio);
 
 int main() {
     int *numeros = (int *)malloc(1000 * sizeof(int));
@@ -57,7 +56,7 @@ int main() {
 
     ordenar_numeros(numeros, tamanio);
 
-    escribir_numeros_ordenados("numeros_ordenados.txt", numeros, tamanio);
+    escribir(numeros, "numeros_ordenados.txt");
 
     free(numeros); /* libera la memoria del arreglo */
 
@@ -126,8 +125,9 @@ void escribir(int numeros[], const char* filename) {
     for (int i = 0; i < 1000; i++) {
         fprintf(archivo, "%d\n", numeros[i]);
     }
-
+    
     fclose(archivo);
+    printf("Se escribio en el archivo '%s'\n", filename);
 }
 
 int busqueda_secuencial(int *numeros, int tamanio, int dato, int *posicion) {
@@ -150,20 +150,4 @@ void ordenar_numeros(int *numeros, int tamanio) {
             }
         }
     }
-}
-
-void escribir_numeros_ordenados(const char *nombre_archivo, int *numeros, int tamanio) {
-    FILE *archivo;
-    archivo = fopen(nombre_archivo, "w");
-    if (archivo == NULL) {
-        printf("No se pudo abrir el archivo '%s'\n", nombre_archivo);
-        return;
-    }
-
-    for (int i = 0; i < tamanio; i++) {
-        fprintf(archivo, "%d\n", numeros[i]);
-    }
-
-    fclose(archivo);
-    printf("Numeros ordenados escritos en '%s'\n", nombre_archivo);
 }
