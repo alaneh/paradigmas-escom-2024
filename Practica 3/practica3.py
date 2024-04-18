@@ -82,5 +82,7 @@ def calculadora():
         continuar = input("\n¿Desea realizar otra operacion? (s/n): ")
         if continuar.lower() != "s":
             break
-# Llamar a la función principal
-calculadora()
+
+if __name__ == "__main__":
+    # Llamar a la función principal
+    calculadora()
