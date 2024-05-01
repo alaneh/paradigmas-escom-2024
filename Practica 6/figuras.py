@@ -1,102 +1,67 @@
 import math
 
-class HexagonoRegular:
-    def __init__(self, lado, color):
-        self.__lado = lado
-        self.__color = color
+class Hexagono:
+    def _init_(self):
+        self.__lado = float(input("Ingresa la longitud del lado del hexagono : "))
+        self.__color = input("Ingresa el color del hexagono : ")
     
-    def __area(self):
+    def area(self):
         return (3 * math.sqrt(3) * self.__lado ** 2) / 2
     
-    def __perimetro(self):
+    def perimetro(self):
         return 6 * self.__lado
     
-    def getArea(self):
-        return self.__area()
-    
-    def getPerimetro(self):
-        return self.__perimetro()
-    
     def getColor(self):
         return self.__color
+    
+    def getArea(self):
+        return self.area()
+    
+    def getPerimetro(self):
+        return self.perimetro()
+
 
 class Rombo:
-    def __init__(self, diagonal_mayor, diagonal_menor, color):
-        self.__diagonal_mayor = diagonal_mayor
-        self.__diagonal_menor = diagonal_menor
-        self.__color = color
+    def _init_(self):
+        self.__diagonal_M = float(input("Ingresa la longitud de la diagonal mayor del rombo: "))
+        self.__diagonal_m = float(input("Ingresa la longitud de la diagonal menor del rombo: "))
+        self.__color = input("Ingresa el color del rombo: ")
     
-    def __area(self):
-        return (self.__diagonal_mayor * self.__diagonal_menor) / 2
+    def area(self):
+        return (self._diagonal_M * self._diagonal_m) / 2
     
-    def __perimetro(self):
-        return 4 * math.sqrt((self.__diagonal_mayor / 2) ** 2 + (self.__diagonal_menor / 2) ** 2)
-    
-    def getArea(self):
-        return self.__area()
-    
-    def getPerimetro(self):
-        return self.__perimetro()
+    def perimetro(self):
+        return 4 * math.sqrt(((self._diagonal_mayor / 2) ** 2) + ((self._diagonal_menor / 2) ** 2))
     
     def getColor(self):
         return self.__color
+    
+    def getArea(self):
+        return self.area()
+    
+    def getPerimetro(self):
+        return self.perimetro()
 
 class Trapecio:
-    def __init__(self, base_mayor, base_menor, altura, color):
-        self.__base_mayor = base_mayor
-        self.__base_menor = base_menor
-        self.__altura = altura
-        self.__color = color
+    def _init_(self):
+        self.__base_M = float(input("Ingresa la longitud de la base mayor del trapecio: "))
+        self.__base_m = float(input("Ingresa la longitud de la base menor del trapecio: "))
+        self.__altura = float(input("Ingresa la altura del trapecio: "))
+        self.__ladoA = float(input("Ingresa la longitud de un lado del trapecio: "))
+        self.__ladoB = float(input("Ingresa la longitud del otro lado del trapecio: "))
+        self.__color = input("Ingresa el color del trapecio: ")
     
-    def __area(self):
-        return ((self.__base_mayor + self.__base_menor) * self.__altura) / 2
+    def area(self):
+        return ((self._base_M + self.base_m) * self._altura) / 2
     
-    def __perimetro(self):
-        lado_oblicuo = math.sqrt(((self.__base_mayor - self.__base_menor) / 2) ** 2 + self.__altura ** 2)
-        return self.__base_mayor + self.__base_menor + 2 * lado_oblicuo
-    
-    def getArea(self):
-        return self.__area()
-    
-    def getPerimetro(self):
-        return self.__perimetro()
+    def perimetro(self):
+        return self._base_M + self.base_m + self.ladoA + self._ladoB
     
     def getColor(self):
         return self.__color
-
-if __name__ == '__main__':
-
-    print(f'''      
-          Resultados de las figuras geométricas como objetos
-          
-          ''')
-    hexagono = HexagonoRegular(5, 'azul')
-    print("Área del hexágono:", hexagono.getArea())
-    print("Perímetro del hexágono:", hexagono.getPerimetro()) 
-    print("Color del hexágono:", hexagono.getColor())
-
-    rombo = Rombo(6, 4, 'verde')
-    print("\nÁrea del rombo:", rombo.getArea())
-    print("Perímetro del rombo:", rombo.getPerimetro())
-    print("Color del rombo:", rombo.getColor())
-
-    trapecio = Trapecio(8, 5, 4, 'rojo')
-    print("\nÁrea del trapecio:", trapecio.getArea())
-    print("Perímetro del trapecio:", trapecio.getPerimetro())
-    print("Color del trapecio:", trapecio.getColor())
-
-hexagono = HexagonoRegular(5, 'azul')
-print("Área del hexágono:", hexagono.getArea())
-print("Perímetro del hexágono:", hexagono.getPerimetro())
-print("Color del hexágono:", hexagono.getColor())
-
-rombo = Rombo(6, 4, 'verde')
-print("\nÁrea del rombo:", rombo.getArea())
-print("Perímetro del rombo:", rombo.getPerimetro())
-print("Color del rombo:", rombo.getColor())
-
-trapecio = Trapecio(8, 5, 4, 'rojo')
-print("\nÁrea del trapecio:", trapecio.getArea())
-print("Perímetro del trapecio:", trapecio.getPerimetro())
-print("Color del trapecio:", trapecio.getColor())
-
+    
+    def getArea(self):
+        return self.area()
+    
+    def getPerimetro(self):
+        return self.perimetro()
