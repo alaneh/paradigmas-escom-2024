@@ -65,21 +65,3 @@ class Trapecio:
     
     def getPerimetro(self):
         return self.perimetro()
-
-print("Creando un trapecio:\n")
-trapecio = Trapecio()
-print("Area del trapecio:", trapecio.getArea())
-print("Perimetro del trapecio:", trapecio.getPerimetro())
-print("Color del trapecio:", trapecio.getColor())
-
-print("Creando un hexagono:\n")
-hexagono = Hexagono()
-print("Area del hexagono:", hexagono.getArea())
-print("Perímetro del hexagono:", hexagono.getPerimetro())
-print("Color del hexagono :\n", hexagono.getColor())
-
-print("Creando un rombo:\n")
-rombo = Rombo()
-print("Area del rombo:", rombo.getArea())
-print("Perímetro del rombo:", rombo.getPerimetro())
-print("Color del rombo:\n", rombo.getColor())
