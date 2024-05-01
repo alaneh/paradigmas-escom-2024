@@ -85,4 +85,18 @@ if __name__ == '__main__':
     print("Perímetro del trapecio:", trapecio.getPerimetro())
     print("Color del trapecio:", trapecio.getColor())
 
+hexagono = HexagonoRegular(5, 'azul')
+print("Área del hexágono:", hexagono.getArea())
+print("Perímetro del hexágono:", hexagono.getPerimetro())
+print("Color del hexágono:", hexagono.getColor())
+
+rombo = Rombo(6, 4, 'verde')
+print("\nÁrea del rombo:", rombo.getArea())
+print("Perímetro del rombo:", rombo.getPerimetro())
+print("Color del rombo:", rombo.getColor())
+
+trapecio = Trapecio(8, 5, 4, 'rojo')
+print("\nÁrea del trapecio:", trapecio.getArea())
+print("Perímetro del trapecio:", trapecio.getPerimetro())
+print("Color del trapecio:", trapecio.getColor())
 
