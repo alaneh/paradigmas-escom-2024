@@ -1,5 +1,7 @@
-from abc import ABC, abstractmethod
+import matplotlib.pyplot as plt
+import numpy as np
 import math
+from abc import ABC, abstractmethod
 
 class Figure(ABC):
     @abstractmethod
@@ -12,6 +14,10 @@ class Figure(ABC):
 
     @abstractmethod
     def area(self):
+        pass
+
+    @abstractmethod
+    def draw(self, ax):
         pass
 
 class Triangle(Figure):
@@ -31,6 +37,12 @@ class Triangle(Figure):
         s = self.perimetro() / 2
         return math.sqrt(s * (s - self.a) * (s - self.b) * (s - self.c))
 
+    def draw(self, ax):
+        x = [0, self.a, self.b, 0]
+        y = [0, 0, self.c, 0]
+        ax.fill(x, y, facecolor=self.color, edgecolor='black')
+        ax.plot(x, y, color="black")
+
 class Circle(Figure):
     def __init__(self, color, radius):
         self.color = color
@@ -44,6 +56,10 @@ class Circle(Figure):
 
     def area(self):
         return math.pi * self.radius**2
+
+    def draw(self, ax):
+        circle = plt.Circle((0, 0), self.radius, facecolor=self.color, edgecolor='black')
+        ax.add_patch(circle)
 
 class Rectangle(Figure):
     def __init__(self, color, width, height):
@@ -60,6 +76,10 @@ class Rectangle(Figure):
     def area(self):
         return self.width * self.height
 
+    def draw(self, ax):
+        rect = plt.Rectangle((0, 0), self.width, self.height, facecolor=self.color, edgecolor='black')
+        ax.add_patch(rect)
+
 class Hexagon(Figure):
     def __init__(self, color, side):
         self.color = color
@@ -74,13 +94,28 @@ class Hexagon(Figure):
     def area(self):
         return (3 * math.sqrt(3) * self.side**2) / 2
 
+    def draw(self, ax):
+        angle = np.linspace(0, 2 * np.pi, 7)
+        x = self.side * np.cos(angle)
+        y = self.side * np.sin(angle)
+        ax.fill(x, y, facecolor=self.color, edgecolor='black')
+        ax.plot(x, y, color="black")
+
 # Demonstración de polimorfismo
 figures = [
-    Triangle("Red", 3, 4, 5),
-    Circle("Blue", 10),
-    Rectangle("Green", 4, 7),
-    Hexagon("Yellow", 6)
+    Triangle("red", 3, 4, 5),
+    Circle("blue", 10),
+    Rectangle("green", 4, 7),
+    Hexagon("yellow", 6)
 ]
 
-for figure in figures:
-    print(f"Color: {figure.getColor()}, Perimeter: {figure.perimetro()}, Area: {figure.area()}")
+fig, axs = plt.subplots(2, 2, figsize=(10, 10))
+axs = axs.flatten()
+
+for ax, figure in zip(axs, figures):
+    ax.set_aspect('equal')
+    figure.draw(ax)
+    ax.set_title(f"Color: {figure.getColor()}\nPerimeter: {figure.perimetro():.2f}, Area: {figure.area():.2f}")
+
+plt.tight_layout()
+plt.show()
