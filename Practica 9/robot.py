@@ -14,11 +14,6 @@ class Robot:
         self.path = []
 
     def find_path(self):
-        """
-        Encuentra una ruta desde la esquina superior izquierda hasta la esquina inferior derecha.
-        
-        :return: Lista de tuplas representando la ruta encontrada o None si no hay ruta posible.
-        """
         if self._dfs(0, 0):
             return self.path
         else:
